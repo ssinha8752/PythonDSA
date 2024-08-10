@@ -93,6 +93,20 @@ class LinkedList:
         return True
 
 
+    def remove(self,pos):
+        if pos<0 or pos>self.length:
+            return False
+        if pos==0:
+            return self.pop_first()
+        if pos==self.length-1:
+            return self.pop()
+        temp=self.get(pos-1)
+        temp_next=temp.next
+        temp.next=temp_next.next
+        temp_next.next=None
+        self.length-=1
+        return True
+
 ll=LinkedList(1)
 ll.pre_append(2)
 ll.append(3)
@@ -100,4 +114,5 @@ ll.append(4)
 ll.set(2,100)
 ll.set(1,400)
 ll.insert(2,5)
+ll.remove(2)
 ll.print_list()
