@@ -40,11 +40,16 @@ class LinkedList:
         self.tail=temp
         self.length-=1
 
+    def pop_first(self):
+        temp=self.head.next
+        self.head.next=None
+        self.head=temp
+        self.length-=1
 
 
 ll=LinkedList(1)
 ll.pre_append(2)
 ll.append(3)
-ll.pop()
-ll.pop()
 ll.print_list()
+print(ll.head.value)
+print(ll.tail.value)
