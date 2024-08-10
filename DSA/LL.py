@@ -26,9 +26,14 @@ class LinkedList:
             self.tail=new_node
         self.length+=1
 
+    def pre_append(self,value):
+        new_node=Node(value)
+        new_node.next=self.head
+        self.head=new_node
+        self.length+=1
 
-ll=LinkedList(4)
-ll.append(5)
+
+ll=LinkedList(1)
+ll.pre_append(2)
+ll.append(3)
 ll.print_list()
-
-print(ll.tail.value)
