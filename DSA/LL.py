@@ -107,6 +107,18 @@ class LinkedList:
         self.length-=1
         return True
 
+    def reversed(self):
+        temp=self.head
+        self.head=self.tail
+        self.tail=temp
+        after=temp.next
+        before=None
+        for _ in range(self.length):
+            after=temp.next
+            temp.next=before
+            before=temp
+            temp=after
+
 ll=LinkedList(1)
 ll.pre_append(2)
 ll.append(3)
@@ -115,4 +127,5 @@ ll.set(2,100)
 ll.set(1,400)
 ll.insert(2,5)
 ll.remove(2)
+ll.reversed()
 ll.print_list()
