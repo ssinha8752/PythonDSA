@@ -93,18 +93,18 @@ class LinkedList:
         return True
 
 
-    def remove(self,pos):
-        if pos<0 or pos>self.length:
-            return False
-        if pos==0:
+    def remove(self,index):
+        if index < 0 or index >=self.length:
+            return None
+        if index == 0:
             return self.pop_first()
-        if pos==self.length-1:
+        if index == self.length - 1:
             return self.pop()
-        temp=self.get(pos-1)
-        temp_next=temp.next
-        temp.next=temp_next.next
-        temp_next.next=None
-        self.length-=1
+        pre = self.get(index - 1)
+        temp = pre.next
+        pre.next = temp.next
+        temp.next = None
+        self.length -= 1
         return True
 
     def reversed(self):
