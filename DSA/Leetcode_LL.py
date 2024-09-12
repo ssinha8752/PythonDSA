@@ -23,12 +23,12 @@ class LinkedList:
         return True
 
     def find_middle_node(self):
-        node_one=self.head
-        node_two=self.head
-        while node_two is not None:
-            node_one=node_one.next
-            node_two=node_two.next.next
-            return node_one
+        node_one = self.head
+        node_two = self.head
+        while node_two is not None and node_two.next is not None:
+            node_one = node_one.next
+            node_two = node_two.next.next
+        return node_one
 
 
 my_linked_list = LinkedList(1)
