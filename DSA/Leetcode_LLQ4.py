@@ -32,42 +32,27 @@ class LinkedList:
         self.tail = None
         self.length = 0
 
+    def partition_list(self, x):
+        if not self.head:
+            return
 
+        partition_1_head = partition_1_tail = Node(0)
+        partition_2_head = partition_2_tail = Node(0)
 
-#   +===================================================+
-#   |               WRITE YOUR CODE HERE                |
-#   | Description:                                      |
-#   | - This method partitions a linked list around a   |
-#   |   value `x`.                                      |
-#   | - It rearranges the nodes so that all nodes less  |
-#   |   than `x` come before all nodes greater or equal |
-#   |   to `x`.                                         |
-#   |                                                   |
-#   | Tips:                                             |
-#   | - We use two dummy nodes, `dummy1` and `dummy2`,  |
-#   |   to build two separate lists: one for elements   |
-#   |   smaller than `x` and one for elements greater   |
-#   |   or equal to `x`.                                |
-#   | - `prev1` and `prev2` help us keep track of the   |
-#   |   last nodes in these lists.                      |
-#   | - Finally, we merge these two lists by setting    |
-#   |   `prev1.next = dummy2.next`.                     |
-#   | - The head of the resulting list becomes          |
-#   |   `dummy1.next`.                                  |
-#   +===================================================+
+        current = self.head
+        while current:
+            if current.value < x:
+                partition_1_tail.next = current
+                partition_1_tail = current
+            else:
+                partition_2_tail.next = current
+                partition_2_tail = current
+            current = current.next
 
+        partition_2_tail.next = None
+        partition_1_tail.next = partition_2_head.next
+        self.head = partition_1_head.next
 
-#  +=====================================================+
-#  |                                                     |
-#  |          THE TEST CODE BELOW WILL PRINT             |
-#  |              OUTPUT TO "USER LOGS"                  |
-#  |                                                     |
-#  |  Use the output to test and troubleshoot your code  |
-#  |                                                     |
-#  +=====================================================+
-
-
-# Function to convert linked list to Python list
 def linkedlist_to_list(head):
     result = []
     current = head
